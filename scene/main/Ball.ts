@@ -1,7 +1,7 @@
 import GuaGame from "../../gua_game/GuaGame";
 
 const canvasWidth = 400;
-const canvasHeight = 300;
+const canvasHeight = 600;
 
 class Ball {
   x: number;

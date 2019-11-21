@@ -15,7 +15,11 @@ class GuaScene {
     });
   }
 
-  update() {}
+  update() {
+    this.elements.forEach(element => {
+      element.update && element.update();
+    });
+  }
 
   addElement(img: GuaImage) {
     this.elements.push(img);

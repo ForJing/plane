@@ -1,4 +1,4 @@
-import { GuaImage } from "../types";
+import GuaImage from "./GuaImage";
 
 export const imageFromPath = path => {
   const img = new Image();
@@ -8,10 +8,10 @@ export const imageFromPath = path => {
 
 export function aCollideWithb(a: GuaImage, b: GuaImage) {
   if (
-    a.x + a.image.width > b.x &&
-    a.x < b.image.width + b.x &&
-    a.y + a.image.height > b.y &&
-    a.y < b.y + b.image.height
+    a.x + a.w > b.x &&
+    a.x < b.w + b.x &&
+    a.y + a.h > b.y &&
+    a.y < b.y + b.h
   ) {
     return true;
   } else {
