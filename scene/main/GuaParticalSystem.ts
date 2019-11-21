@@ -8,6 +8,8 @@ class GuaParticalSystem {
   y: number;
   numberOfParticles: number;
   particles: GuaParticle[];
+  duration = 30;
+  alive: boolean;
   constructor(game: GuaGame) {
     this.game = game;
     this.setup();
@@ -18,9 +20,15 @@ class GuaParticalSystem {
     this.y = 150;
     this.numberOfParticles = 20;
     this.particles = [];
+    this.alive = true;
   }
 
   update() {
+    this.duration--;
+    if (this.duration < 0) {
+      this.particles.forEach(i => (i.alive = false));
+      this.alive = false;
+    }
     // 添加小火花
     if (this.particles.length < this.numberOfParticles) {
       const p = new GuaParticle(this.game);
@@ -42,8 +50,10 @@ class GuaParticalSystem {
   }
 
   draw() {
-    for (var p of this.particles) {
-      p.draw();
+    if (this.alive) {
+      for (var p of this.particles) {
+        p.draw();
+      }
     }
   }
 }

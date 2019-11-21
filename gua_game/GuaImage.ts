@@ -2,6 +2,7 @@ import GuaGame from "./GuaGame";
 
 class GuaImage {
   texture: HTMLImageElement;
+  name: string;
   x: number;
   y: number;
   w: number;
@@ -15,6 +16,7 @@ class GuaImage {
     this.w = w || this.texture.width;
     this.h = h || this.texture.height;
     this.game = game;
+    this.name = name;
   }
 
   draw() {

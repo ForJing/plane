@@ -21,7 +21,6 @@ class GuaScene {
     });
 
     this.elements = this.elements.filter(i => i.alive);
-    console.log(this.elements);
   }
 
   addElement(img) {

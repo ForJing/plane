@@ -9,15 +9,11 @@ class Bullet extends GuaImage {
   constructor(game, type) {
     super(game, "bullet");
     this.type = type;
-    this.setup();
-  }
-
-  setup() {
-    this.speed = 3;
+    this.speed = type === "player" ? -6 : 5;
   }
 
   update() {
-    this.y -= this.speed;
+    this.y += this.speed;
 
     if (this.y < 0) {
       this.alive = false;
@@ -29,7 +25,18 @@ class Bullet extends GuaImage {
       const enemies = scene.enemies;
       enemies.forEach(enemy => {
         if (aCollideWithb(this, enemy)) {
-          enemy.alive = false;
+          enemy.boom();
+          this.alive = false;
+        }
+      });
+      // 判断与敌方子弹相撞
+      const enemyBullets = scene.elements.filter(
+        i => i.name === "bullet" && i.type === "enemy"
+      );
+
+      enemyBullets.forEach(eb => {
+        if (aCollideWithb(this, eb)) {
+          eb.alive = false;
           this.alive = false;
         }
       });
