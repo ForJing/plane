@@ -22,7 +22,7 @@ class Player extends GuaImage {
       this.cooldown = 6;
       const x = this.x + this.w / 2;
       const y = this.y - 5;
-      const b = new Bullet(this.game);
+      const b = new Bullet(this.game, "player");
       b.x = x;
       b.y = y;
       this.game.scene.addElement(b);

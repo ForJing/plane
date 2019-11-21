@@ -19,10 +19,12 @@ class GuaScene {
     this.elements.forEach(element => {
       element.update && element.update();
     });
+
+    this.elements = this.elements.filter(i => i.alive);
+    console.log(this.elements);
   }
 
   addElement(img) {
-    console.log(img);
     this.elements.push(img);
   }
 }

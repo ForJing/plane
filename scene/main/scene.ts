@@ -32,8 +32,8 @@ class Scene extends GuaScene {
     this.addEnemies();
     this.addElement(this.player);
 
-    const ps = new GuaParticalSystem(game);
-    this.addElement(ps);
+    // const ps = new GuaParticalSystem(game);
+    // this.addElement(ps);
   }
 
   setupInputs() {
@@ -76,6 +76,7 @@ class Scene extends GuaScene {
   update() {
     this.cloud.y += 2;
     super.update();
+    this.enemies = this.enemies.filter(i => i.alive);
   }
 }
 

@@ -17,7 +17,7 @@ async function __main() {
     enemy3: require("./images/enemy3.png"),
     enemy4: require("./images/enemy4.png"),
     bullet: require("./images/bullet.png"),
-    fire: require("./images/fire.png"),
+    fire: require("./images/fire.png")
   };
 
   const imgs = await loadImages(images);

@@ -6,6 +6,7 @@ class GuaImage {
   y: number;
   w: number;
   h: number;
+  alive: boolean = true;
   game: GuaGame;
   constructor(game: GuaGame, name: string, w?, h?) {
     this.texture = game.textureByName(name);
