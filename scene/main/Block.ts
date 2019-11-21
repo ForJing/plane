@@ -27,10 +27,10 @@ class Block {
   getImageBylife(life) {
     let image;
     if (life === 1) {
-      image = this.game.imageByName("brokenBlock");
+      image = this.game.textureByName("brokenBlock");
     }
     if (life === 2) {
-      image = this.game.imageByName("block");
+      image = this.game.textureByName("block");
     }
     return image;
   }

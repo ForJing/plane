@@ -1,91 +1,36 @@
 import GuaGame from "../../gua_game/GuaGame";
-import Paddle from "./Paddle";
-import Ball from "./Ball";
-import { loadLevel } from "./level";
-import Block from "./Block";
-import SceneEnd from "../end/scene_end";
+import GuaImage from "../../gua_game/GuaImage";
+import GuaScene from "../../gua_game/GuaScene";
 
-class Scene {
+class Scene extends GuaScene {
+  bg: GuaImage;
   game: GuaGame;
-  paddle: Paddle;
-  ball: Ball;
-  blocks: Block[];
-  score: number;
-
+  player: GuaImage;
+  elements: Array<any>;
+  cloud: GuaImage;
   constructor(game: GuaGame) {
-    // 初始化
-    const paddle = new Paddle(game);
-    const ball = new Ball(game);
-    const blocks = loadLevel(game);
-
-    this.paddle = paddle;
-    this.score = 0;
-    this.ball = ball;
-    this.blocks = blocks;
-    this.game = game;
-
-    game.registerAction("a", () => paddle.moveLeft());
-
-    game.registerAction("d", () => paddle.moveRight());
-
-    game.registerAction("f", () => {
-      ball.fire();
-    });
-
-    game.canvas.addEventListener("mousedown", function(e) {
-      const { offsetX, offsetY } = e;
-      if (ball.containsPoint(offsetX, offsetY)) {
-        function moveHanlder(e) {
-          const { offsetX: targetX, offsetY: targetY } = e;
-
-          ball.x = targetX - ball.image.width / 2;
-          ball.y = targetY - ball.image.height / 2;
-        }
-
-        game.canvas.addEventListener("mousemove", moveHanlder);
-
-        game.canvas.addEventListener("mouseup", () => {
-          game.canvas.removeEventListener("mousemove", moveHanlder);
-        });
-      }
-    });
+    super(game);
+    this.setup();
   }
 
-  draw() {
+  setup() {
     const game = this.game;
+    this.bg = new GuaImage(game, "sky");
+    this.player = new GuaImage(game, "player", 46, 59);
+    this.cloud = new GuaImage(game, "cloud", 150, 150);
 
-    game.drawImage(this.paddle);
-    game.drawImage(this.ball);
+    this.player.x = 100;
+    this.player.y = 450;
 
-    this.blocks.forEach(block => {
-      if (block.alive) {
-        game.drawImage(block);
-      }
-    });
-
-    game.context.font = "16px Arial";
-    game.context.fillText(`分数：${this.score}`, 0, 20);
+    this.addElement(this.bg);
+    this.addElement(this.cloud);
+    this.addElement(this.player);
   }
+
+  // draw() {}
 
   update() {
-    this.ball.move();
-
-    if (this.ball.y > this.paddle.y) {
-      const endScene = new SceneEnd(this.game);
-      this.game.scene = endScene;
-    }
-
-    // 判断相撞
-    if (this.paddle.collide(this.ball)) {
-      this.ball.bounce();
-    }
-    this.blocks.forEach(block => {
-      if (block.alive && block.collide(this.ball)) {
-        this.score += 100;
-        block.kill();
-        this.ball.bounce();
-      }
-    });
+    this.cloud.y += 2;
   }
 }
 

@@ -1,4 +1,5 @@
-import { GuaImage, Keydowns } from "../types";
+import { Keydowns } from "../types";
+import GuaImage from "./GuaImage";
 
 class GuaGame {
   canvas: HTMLCanvasElement;
@@ -28,7 +29,7 @@ class GuaGame {
     this.paused = !this.paused;
   }
 
-  imageByName(name) {
+  textureByName(name) {
     return this.images[name];
   }
 
@@ -80,7 +81,13 @@ class GuaGame {
   }
 
   drawImage(guaImage: GuaImage) {
-    this.context.drawImage(guaImage.image, guaImage.x, guaImage.y);
+    this.context.drawImage(
+      guaImage.texture,
+      guaImage.x,
+      guaImage.y,
+      guaImage.w,
+      guaImage.h
+    );
   }
 
   run() {

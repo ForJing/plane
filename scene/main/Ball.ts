@@ -16,7 +16,7 @@ class Ball {
     this.y = 100;
     this.speedX = 5;
     this.speedY = 5;
-    this.image = game.imageByName("ball");
+    this.image = game.textureByName("ball");
   }
 
   ajustPos() {

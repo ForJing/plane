@@ -5,7 +5,7 @@ import Ball from "./Ball";
 const canvasWidth = 400;
 const canvasHeight = 300;
 
-class Paddle {
+class Player {
   x: number;
   y: number;
   speed: number;
@@ -16,7 +16,7 @@ class Paddle {
     this.x = 100;
     this.y = 200;
     this.speed = 15;
-    this.image = game.imageByName("paddle");
+    this.image = game.textureByName("player");
   }
 
   ajustPos() {
@@ -38,9 +38,9 @@ class Paddle {
     this.ajustPos();
   }
 
-  collide(ball: Ball) {
-    return aCollideWithb(this, ball);
-  }
+  // collide(ball: Ball) {
+  //   return aCollideWithb(this, ball);
+  // }
 }
 
-export default Paddle;
+export default Player;
