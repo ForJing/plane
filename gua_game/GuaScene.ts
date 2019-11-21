@@ -16,11 +16,13 @@ class GuaScene {
   }
 
   update() {
-    this.elements.forEach(element => {
-      element.update && element.update();
-    });
+    try {
+      this.elements.forEach(element => {
+        element.update && element.update();
+      });
 
-    this.elements = this.elements.filter(i => i.alive);
+      this.elements = this.elements.filter(i => i.alive);
+    } catch (error) {}
   }
 
   addElement(img) {

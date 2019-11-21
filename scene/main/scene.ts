@@ -4,6 +4,7 @@ import GuaScene from "../../gua_game/GuaScene";
 import Player from "./Player";
 import Enemy from "./Enemy";
 import GuaParticalSystem from "./GuaParticalSystem";
+import SceneEnd from "../end/scene_end";
 
 class Scene extends GuaScene {
   bg: GuaImage;
@@ -77,6 +78,11 @@ class Scene extends GuaScene {
     this.cloud.y += 2;
     super.update();
     this.enemies = this.enemies.filter(i => i.alive);
+  }
+
+  fail() {
+    this.elements = [];
+    this.game.scene = new SceneEnd(this.game);
   }
 }
 

@@ -1,12 +1,12 @@
 import GuaGame from "../../gua_game/GuaGame";
 import Scene from "../main/scene";
+import GuaScene from "../../gua_game/GuaScene";
 
-class SceneTitle {
+class SceneTitle extends GuaScene {
   game: GuaGame;
 
   constructor(game: GuaGame) {
-    this.game = game;
-
+    super(game);
     game.registerAction("k", () => {
       game.scene = new Scene(game);
     });

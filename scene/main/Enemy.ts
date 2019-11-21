@@ -1,8 +1,9 @@
 import GuaImage from "../../gua_game/GuaImage";
 import GuaGame from "../../gua_game/GuaGame";
-import { randomBetween } from "../../gua_game/utils";
+import { randomBetween, aCollideWithb } from "../../gua_game/utils";
 import Bullet from "./Bullet";
 import GuaParticalSystem from "./GuaParticalSystem";
+import Scene from "./scene";
 
 class Enemy extends GuaImage {
   speed: number;
@@ -44,6 +45,13 @@ class Enemy extends GuaImage {
 
   update() {
     this.y += this.speed;
+    const scene = this.game.scene as Scene;
+    const player = scene.player;
+
+    if (aCollideWithb(this, player)) {
+      scene.fail();
+    }
+
     if (this.y + this.h > 0) {
       this.fire();
       this.cooldown--;
