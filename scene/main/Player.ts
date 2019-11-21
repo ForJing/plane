@@ -2,6 +2,7 @@ import GuaGame from "../../gua_game/GuaGame";
 import { aCollideWithb } from "../../gua_game/utils";
 import Ball from "./Ball";
 import GuaImage from "../../gua_game/GuaImage";
+import Bullet from "./Bullet";
 
 const canvasWidth = 400;
 const canvasHeight = 600;
@@ -14,6 +15,15 @@ class Player extends GuaImage {
     this.speed = 10;
     this.w = 39;
     this.h = 46;
+  }
+
+  fire() {
+    const x = this.x + this.w / 2;
+    const y = this.y - 5;
+    const b = new Bullet(this.game);
+    b.x = x;
+    b.y = y;
+    this.game.scene.addElement(b);
   }
 
   moveLeft() {

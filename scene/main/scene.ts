@@ -52,6 +52,10 @@ class Scene extends GuaScene {
     g.registerAction("s", () => {
       p.moveDown();
     });
+
+    g.registerAction("j", () => {
+      p.fire();
+    });
   }
 
   addEnemies() {

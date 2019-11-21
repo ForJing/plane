@@ -22,6 +22,7 @@ class GuaScene {
   }
 
   addElement(img: GuaImage) {
+    img.scene = this;
     this.elements.push(img);
   }
 }

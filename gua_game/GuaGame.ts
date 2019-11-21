@@ -1,5 +1,6 @@
 import { Keydowns } from "../types";
 import GuaImage from "./GuaImage";
+import GuaScene from "./GuaScene";
 
 class GuaGame {
   canvas: HTMLCanvasElement;
@@ -9,7 +10,7 @@ class GuaGame {
   fps: number;
   paused: boolean;
   images: any;
-  scene: any;
+  scene: GuaScene;
 
   constructor(fps = 30, images = {}) {
     const canvas = <HTMLCanvasElement>document.getElementById("canvas");
