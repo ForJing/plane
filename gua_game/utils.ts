@@ -6,6 +6,10 @@ export const imageFromPath = path => {
   return img;
 };
 
+export function randomBetween(start, end) {
+  return start + Math.floor(Math.random() * (end - start + 1));
+}
+
 export function aCollideWithb(a: GuaImage, b: GuaImage) {
   if (
     a.x + a.w > b.x &&

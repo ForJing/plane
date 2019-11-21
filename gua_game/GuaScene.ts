@@ -11,7 +11,7 @@ class GuaScene {
 
   draw() {
     this.elements.forEach(element => {
-      this.game.drawImage(element);
+      element.draw && element.draw();
     });
   }
 
@@ -21,8 +21,8 @@ class GuaScene {
     });
   }
 
-  addElement(img: GuaImage) {
-    img.scene = this;
+  addElement(img) {
+    console.log(img);
     this.elements.push(img);
   }
 }

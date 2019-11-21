@@ -1,6 +1,4 @@
 import GuaGame from "../../gua_game/GuaGame";
-import { aCollideWithb } from "../../gua_game/utils";
-import Ball from "./Ball";
 import GuaImage from "../../gua_game/GuaImage";
 import Bullet from "./Bullet";
 

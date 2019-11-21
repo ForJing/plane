@@ -15,6 +15,10 @@ class GuaImage {
     this.h = h || this.texture.height;
     this.game = game;
   }
+
+  draw() {
+    this.game.drawImage(this);
+  }
 }
 
 export default GuaImage;

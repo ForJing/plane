@@ -1,9 +1,6 @@
 import GuaImage from "../../gua_game/GuaImage";
 import GuaGame from "../../gua_game/GuaGame";
-
-function randomBetween(start, end) {
-  return start + Math.floor(Math.random() * (end - start + 1));
-}
+import { randomBetween } from "../../gua_game/utils";
 
 class Enemy extends GuaImage {
   speed: number;
@@ -21,8 +18,6 @@ class Enemy extends GuaImage {
   }
 
   update() {
-    console.log("aklsdfj");
-
     this.y += this.speed;
     if (this.y > 600) {
       this.setup();

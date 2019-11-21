@@ -3,6 +3,7 @@ import GuaImage from "../../gua_game/GuaImage";
 import GuaScene from "../../gua_game/GuaScene";
 import Player from "./Player";
 import Enemy from "./Enemy";
+import GuaParticalSystem from "./GuaParticalSystem";
 
 class Scene extends GuaScene {
   bg: GuaImage;
@@ -30,11 +31,13 @@ class Scene extends GuaScene {
     this.addElement(this.cloud);
     this.addEnemies();
     this.addElement(this.player);
+
+    const ps = new GuaParticalSystem(game);
+    this.addElement(ps);
   }
 
   setupInputs() {
     const g = this.game;
-    const s = this;
     const p = this.player;
 
     g.registerAction("a", () => {
