@@ -9,21 +9,32 @@ const canvasHeight = 600;
 
 class Player extends GuaImage {
   speed: number;
+  cooldown: number;
 
   constructor(game: GuaGame) {
     super(game, "player");
     this.speed = 10;
     this.w = 39;
     this.h = 46;
+    this.cooldown = 0;
   }
 
   fire() {
-    const x = this.x + this.w / 2;
-    const y = this.y - 5;
-    const b = new Bullet(this.game);
-    b.x = x;
-    b.y = y;
-    this.game.scene.addElement(b);
+    if (this.cooldown === 0) {
+      this.cooldown = 6;
+      const x = this.x + this.w / 2;
+      const y = this.y - 5;
+      const b = new Bullet(this.game);
+      b.x = x;
+      b.y = y;
+      this.game.scene.addElement(b);
+    }
+  }
+
+  update() {
+    if (this.cooldown > 0) {
+      this.cooldown--;
+    }
   }
 
   moveLeft() {
